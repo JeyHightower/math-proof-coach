@@ -17,14 +17,14 @@ def get_or_create_session(session_id: str):
 
     if session_id not in sessions:
         sessions[session_id] = client.chats.create(
-            model="gemini-2.5-flash",
+            model="gemini-3.8-flash",
             config=types.GenerateContentConfig(
-                system_instructions=system_prompt,
+                system_instruction=system_prompt,
                 temperature=0.3,
             )
         )
     return sessions[session_id]
-    
+
 
 def process_student_message(session_id:str, student_message:str) -> str:
     """
