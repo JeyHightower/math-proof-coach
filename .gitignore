@@ -1,0 +1,32 @@
+# Environment Variables & API Secrets (NEVER commit these)
+.env
+.env.local
+.env.*.local
+*.env
+
+# Python & Virtual Environments (backend)
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+ENV/
+.pytest_cache/
+
+# Node.js & Next.js/React (frontend)
+node_modules/
+.next/
+out/
+build/
+dist/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Operating System & IDE junk
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
