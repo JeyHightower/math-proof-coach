@@ -1,7 +1,9 @@
+'use client';
+
 import ReactMarkdown from "react-markdown";
 import remarkMath from "remark-math";
 import rehypeKatex from "rehype-katex";
-import { Message } from "@/types/message";
+import { Message } from "@/types/chat";
 
 
 interface MessageBubbleProps {
