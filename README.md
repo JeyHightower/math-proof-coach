@@ -22,7 +22,7 @@ The system adheres strictly to the **Rule, Engine, System** design paradigm:
 ┌──────────────────────────────────────────────────────────▼──────────────┐
 │                              ENGINE LAYER                               │
 │  ┌───────────────────────────────────────────────────────────────────┐  │
-│  │  - Model Fallback & Selection (Gemini 3.8/3.7/3.5/2.5)            │  │
+│  │  - Model Fallback & Selection (Gemini 3.8/3.7/3.5/flash)            │  │
 │  │  - Circuit Breaker & Cooldown Tracking                            │  │
 │  │  - Session History Transfer & Persistence                         │  │
 │  │  - Exponential Backoff & Transient Retry Logic                     │  │
