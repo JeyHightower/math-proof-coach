@@ -24,7 +24,7 @@ def store_cache_response(session_id: str, prompt: str, response: str) -> None:
     key = (session_id, prompt.strip().lower())
     RESPONSE_CACHE[key] = response
 
-def enfore_request_pacing() -> None:
+def enforce_request_pacing() -> None:
     """
     Enforces a minimum interval between outgoing req3uests to prevent burst in
     rate limits.

@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 from google import genai
 from google.genai import types
 from google.genai.errors import APIError
-from cache import get_cached_response, store_cache_response, enfore_request_pacing
+from cache import get_cached_response, store_cache_response, enforce_request_pacing
 from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
 from rules import system_prompt
 
@@ -22,7 +22,7 @@ FALLBACK_MODELS = [
     "gemini-3.8-flash",
     "gemini-3.7-flash",
     "gemini-3.5-flash",
-    "gemini-2.5-pro",
+    "gemini-3.1-pro-preview",
 ]
 
 
@@ -130,7 +130,7 @@ def process_student_message(
         )
         return cached_response
 
-    enfore_request_pacing()
+    enforce_request_pacing()
 
     last_error = None
     candidate_models = get_ordered_candidate_models(session_id)
