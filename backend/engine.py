@@ -5,7 +5,7 @@ from typing import  Any
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from google.genai.errors import APIError
+from google.genai.errors import APIError, ClientError
 from cache import get_cached_response, store_cache_response, enforce_request_pacing
 from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
 from rules import system_prompt
@@ -140,7 +140,7 @@ def process_student_message(
 
         try:
             chat_session = get_or_create_session(session_id, model_name=model_name)
-        except Exception as e:
+        except (APIError, ClientError) as e:
             last_error = e
             logger.warning(
                 f"Failed to initialize session for model '{model_name}': {e}"

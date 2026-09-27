@@ -26,7 +26,7 @@ def store_cache_response(session_id: str, prompt: str, response: str) -> None:
 
 def enforce_request_pacing() -> None:
     """
-    Enforces a minimum interval between outgoing req3uests to prevent burst in
+    Enforces a minimum interval between outgoing requests to prevent burst in
     rate limits.
     """
     global LAST_REQUEST_TIME
