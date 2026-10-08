@@ -1,13 +1,13 @@
 import logging
-import os
 import time
-from typing import  Any
+from typing import Any
+
+from cache import enforce_request_pacing, get_cached_response, store_cache_response
 from dotenv import load_dotenv
+from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
 from google import genai
 from google.genai import types
 from google.genai.errors import APIError, ClientError
-from cache import get_cached_response, store_cache_response, enforce_request_pacing
-from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
 from rules import system_prompt
 
 load_dotenv()

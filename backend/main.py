@@ -1,11 +1,11 @@
 import logging
-from fastapi import FastAPI, Request, status
-from fastapi.responses import JSONResponse
-from fastapi.middleware.cors import CORSMiddleware
-from pydantic import BaseModel
-from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
-from engine import process_student_message
 
+from engine import process_student_message
+from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
+from fastapi import FastAPI, Request, status
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
+from pydantic import BaseModel
 
 
 class ChatRequest(BaseModel):

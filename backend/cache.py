@@ -1,7 +1,5 @@
-import logging 
-import time 
-from typing import Optional
-
+import logging
+import time
 
 logger = logging.getLogger(__name__)
 
@@ -9,7 +7,7 @@ RESPONSE_CACHE: dict[tuple[str,str], str] = {}
 LAST_REQUEST_TIME: float = 0.0
 MIN_REQUEST_INTERVAL: float = 1.0
 
-def get_cached_response(session_id: str, prompt:str) -> Optional[str]:
+def get_cached_response(session_id: str, prompt:str) -> str | None:
     """
     Retrieves a cache response if an exact match exist for the session.
     """
