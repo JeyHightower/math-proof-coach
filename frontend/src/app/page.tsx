@@ -7,6 +7,8 @@ import { MessageInput } from './components/MessageInput';
 import { Message, SessionState } from '@/types/chat';
 
 
+const API_URL = (process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:8000').replace(/\/$/, '');
+
 
 export default function Home() {
   const [messages, setMessages] = useState<Message[]>([]);
@@ -45,7 +47,7 @@ export default function Home() {
     setSession((prev) => ({...prev, status: 'loading', error: undefined}));
 
     try {
-      const response = await fetch('http://localhost:8000/api/chat', {
+      const response = await fetch(`${API_URL}/api/chat`, {
         method: "POST",
         headers: {
           'Content-Type': "application/json",
@@ -79,7 +81,7 @@ export default function Home() {
       setSession((prev) => ({
         ...prev,
         status: 'error',
-        error: `${errorMessage} Make sure your FastAPI backend is running on port 8000.`,
+        error: `${errorMessage} The server may be waking up (free hosting can take about a minute). Please try again.`,
       }))
     }
 
