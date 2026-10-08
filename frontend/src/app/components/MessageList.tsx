@@ -10,17 +10,21 @@ interface MessageListProps {
     status: ChatStatus;
 }
 
+
 export const MessageList = ({ messages, status }: MessageListProps) => {
     const bottomRef = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
-        bottomRef.current?.scrollIntoView({ behavior: "smooth" })
+        bottomRef.current?.scrollIntoView({ behavior: "auto" });
     }, [messages, status]);
 
     return (
-        <div className="flex-1 overflow-y-auto p-4 space-y-2">
+        <div
+            className="flex-1 overflow-y-auto p-4 space-y-2"
+            aria-live="polite"
+        >
             {messages.length === 0 ? (
-                <div className="flex flex-col item-center justify-center h-full text-zinc-500 text-center px-4">
+                <div className="flex flex-col items-center justify-center h-full text-zinc-500 text-center px-4">
                     <p className="text-base font-medium text-zinc-300">Welcome to Math Proof Coach</p>
                     <p className="text-sm mt-1 max-w-md">
                         Enter a Theorem, proof problem, or mathematical statement below to start your coaching session.
@@ -43,5 +47,4 @@ export const MessageList = ({ messages, status }: MessageListProps) => {
             <div ref={bottomRef} />
         </div>
     );
-
 };
