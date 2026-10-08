@@ -6,12 +6,12 @@ from exceptions import RateLimitError, ServiceUnavailableError, UpstreamAPIError
 from fastapi import FastAPI, Request, status
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
-from pydantic import BaseModel
+from pydantic import BaseModel, Field
 
 
 class ChatRequest(BaseModel):
-    session_id:str
-    message: str
+    session_id: str = Field(min_length=1, max_length=100)
+    message: str = Field(min_length=1, max_length= 4000)
 
 
 class ChatResponse(BaseModel):
@@ -25,6 +25,10 @@ app = FastAPI(
     description="Backend API for the Socratic Math Proof Coach AI Agent",
     version="1.0.0"
 )
+
+
+default_origins = "http://localhost:3000,https://math-proof-coach.vercel.app"
+raw_origins = os.getenv("ALLOWED_ORIGINS", default_origins)
 
 origins = [
     o.strip()
@@ -76,7 +80,7 @@ async def upstream_api_exception_handler(request:Request, exc:UpstreamAPIError):
 
 
 
-@app.get("/")
+@app.api_route("/", methods=["GET", "HEAD"])
 def health_check():
     """Simple health check endpoint to confirm the server is running."""
     return {"status": "online", "message": "Math Proof Coach API is running."}
