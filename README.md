@@ -1,6 +1,9 @@
 
 # Math Proof Coach
 
+free hosting, first load may take about a minute
+
+
 An AI-powered Socratic tutoring system designed to guide students through real analysis and abstract mathematics proofs. Instead of providing outright solutions, the system engages students through guided questions, definition checks, and logical scaffolding.
 
 Built using the **Rule, Engine, System** architectural pattern, the application pairs a Next.js frontend with a resilient FastAPI backend that orchestrates multi-tiered model fallbacks, circuit breaking, request pacing, and session history management across the Google Gemini model suite.
